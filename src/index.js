@@ -1,13 +1,44 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+
+// Redux imports
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import createSagaMiddleware from 'redux-saga';
+import logger from 'redux-logger';
+import taskReducer from './redux/reducers/task.reducer';
+import taskSaga from './redux/sagas/task.saga';
+
+// CSS
 import './index.css';
+
+// Main App
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// Create middleware
+const sagaMiddleware = createSagaMiddleware();
+
+// Create list of middleware to be used in production mode
+const middlewareList = process.env.NODE_ENV === 'development' ?
+  [sagaMiddleware, logger] :
+  [sagaMiddleware];
+
+// Create the redux store
+const store = createStore(
+  // taskReducer will be main data location
+  taskReducer,
+  // Add middleware to the project
+  applyMiddleware(...middlewareList),
+);
+
+// Tell the sagaMiddleware to use the taskSaga
+sagaMiddleware.run(taskSaga);
+
 ReactDOM.render(
-  <React.StrictMode>
+  <Provider store={store}>
     <App />
-  </React.StrictMode>,
+  </Provider>,
   document.getElementById('root')
 );
 
