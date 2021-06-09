@@ -3,7 +3,6 @@ const pool = require('../modules/pool');
 const router = express.Router();
 
 
-
 router.get('/', (req, res) => { // get all tasks route
     const sqlText = `SELECT * FROM "tasks" ORDER BY id;`;
     pool.query(sqlText).then(result => {
