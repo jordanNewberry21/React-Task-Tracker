@@ -1,7 +1,7 @@
 const tasks = (state = [], action) => {
     switch (action.type) {
         case 'SET_ALL':
-            return [...state, action.payload];
+            return action.payload;
         default:
             return state;
     }

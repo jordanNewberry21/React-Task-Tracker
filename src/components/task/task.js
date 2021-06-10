@@ -1,9 +1,11 @@
 import React from 'react';
 
-const task = () => {
+const task = (props) => {
+    const task = props.task;
+
     return (
         <div>
-            {task.task}
+            <h4>{task.task}</h4>
         </div>
     );
 }
