@@ -12,10 +12,16 @@ function* deleteTask(action) {
     yield put({ type: 'FETCH_ALL' });
 }
 
+function* addTask(action) {
+    const task = action.payload;
+    yield axios.post(`/tasks`);
+    yield put({type: 'FETCH_ALL'});
+}
+
 function* taskSaga() {
     yield takeLatest('FETCH_ALL', fetchTasks);
     yield takeLatest('DELETE', deleteTask);
-
+    yield takeLatest('POST', addTask);
 }
 
 export default taskSaga;
