@@ -18,11 +18,25 @@ router.delete('/:id', (req, res) => { // delete task by id
     pool.query(sqlText, [id]).then(result => {
       console.log('task successfully deleted......')
     }).catch(error => {
-      console.log('error deleting item from inventory........', error);
+      console.log('error deleting task from list........', error);
       res.sendStatus(500);
     });
     res.sendStatus(200);
 });
+
+router.post('/', (req, res) => { // add task
+    const task = req.body;
+    const sqlText = `INSERT INTO "tasks" ("task")
+                    VALUES ($1);`;
+    pool.query(sqlText, [task])
+      .then(result => {
+        console.log('task successfully added to list.........');
+        res.sendStatus(200);
+      }).catch(error => {
+        console.log('error adding task to list.......', error);
+        res.sendStatus(500);
+      });
+})
 
 
   module.exports = router;
