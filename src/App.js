@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.css';
+
 import TaskList from './components/TaskList/TaskList';
+import AddItem from './components/AddItem/AddItem';
 
 function App() {
   // Hooks
@@ -11,6 +13,10 @@ function App() {
   useEffect(() => {
     dispatch({ type: 'FETCH_ALL' });
   }, [dispatch]);
+
+  const addTask = () => {
+
+  }
   
   return (
     <div className="App">
@@ -18,6 +24,9 @@ function App() {
         <h1 className="app-title">
           Daily Task Tracker
         </h1>
+        <section>
+          <AddItem />
+        </section>
         <section>
           <TaskList />
         </section>
