@@ -21,6 +21,7 @@ router.delete('/:id', (req, res) => { // delete task by id
       console.log('error deleting item from inventory........', error);
       res.sendStatus(500);
     });
+    res.sendStatus(200);
 });
 
 
