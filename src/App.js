@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import './App.css';
+import TaskList from './components/TaskList/TaskList';
 
 function App() {
   // Hooks
@@ -17,6 +18,9 @@ function App() {
         <h1 className="app-title">
           Daily Task Tracker
         </h1>
+        <section>
+          <TaskList />
+        </section>
       </header>
     </div>
   );
