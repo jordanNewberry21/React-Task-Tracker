@@ -13,9 +13,8 @@ function* deleteTask(action) {
 }
 
 function* addTask(action) {
-    const task = action.payload;
-    yield axios.post(`/tasks`);
-    yield put({type: 'FETCH_ALL'});
+    yield axios.post(`/tasks`, action.payload);
+    yield put({ type: 'FETCH_ALL' });
 }
 
 function* taskSaga() {

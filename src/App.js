@@ -14,9 +14,6 @@ function App() {
     dispatch({ type: 'FETCH_ALL' });
   }, [dispatch]);
 
-  const addTask = () => {
-
-  }
   
   return (
     <div className="App">

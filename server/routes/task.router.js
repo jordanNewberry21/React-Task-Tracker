@@ -26,7 +26,8 @@ router.delete('/:id', (req, res) => { // delete task by id
 
 router.post('/', (req, res) => { // add task
     const task = req.body;
-    const sqlText = `INSERT INTO "tasks" ("task")
+    console.log('task is........', task)
+    const sqlText = `INSERT INTO tasks (task)
                     VALUES ($1);`;
     pool.query(sqlText, [task])
       .then(result => {
